@@ -12,9 +12,9 @@
   <script type="application/ld+json">
   {"@context":"https://schema.org","@type":"AutoBodyShop","name":"KickinTheirDetails614","description":"Premium auto detailing services in Central Ohio and Surrounding Areas.","telephone":"1-614-917-3935","email":"KickinTheirDetails614@gmail.com","areaServed":"Central Ohio","priceRange":"$$","sameAs":["https://instagram.com/KickinTheirDetails614"]}
   </script>
-  </ fonts.googleapis.com" />
-  </ fonts.gstatic.com" crossorigin />
-  </ fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+//fonts.googleapis.com" />
+//fonts.gstatic.com" crossorigin />
+//fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
   <style>
     :root {
       --text-xs: clamp(0.75rem, 0.7rem + 0.25vw, 0.875rem);
@@ -60,19 +60,15 @@
     /* HEADER */
     .site-header { position: sticky; top: 0; z-index: 100; background: #000000; backdrop-filter: none; border-bottom: 1px solid rgba(255,255,255,.08); }
     .site-header .container { padding-top: .25rem; padding-bottom: .25rem; }
-    .nav { display: flex; align-items: center; justify-content: space-between; gap: 1rem; min-height: 76px; }
-    .brand { display: flex; align-items: center; gap: .9rem; text-decoration: none; color: var(--color-text); min-height: 44px; }
-    .brand img { width: 130px; height: 130px; object-fit: contain; border-radius: 16px; filter: drop-shadow(0 4px 18px rgba(51,215,255,.3)); }
-    .brand-text { display: flex; flex-direction: column; line-height: 1.05; }
-    .brand-name { font-weight: 800; letter-spacing: .01em; font-size: 1rem; }
-    .brand-sub { font-size: var(--text-xs); color: var(--color-text-muted); text-transform: uppercase; letter-spacing: .14em; }
-    .nav-links { display: flex; align-items: center; gap: 1.4rem; list-style: none; }
-    .nav-links a { text-decoration: none; color: var(--color-text-muted); font-size: var(--text-sm); font-weight: 700; padding: .4rem .75rem; border-radius: 999px; border: 1px solid transparent; letter-spacing: .03em; }
-    .nav-links a:hover { color: var(--color-primary); border-color: rgba(51,215,255,.25); background: rgba(51,215,255,.05); }
-    .nav-actions { display: flex; align-items: center; gap: .75rem; }
+    .nav { display: flex; align-items: center; justify-content: space-between; gap: 1rem; min-height: 90px; }
+    .brand { display: flex; align-items: center; text-decoration: none; color: var(--color-text); order: 3; margin-left: auto; }
+    .nav-actions { display: flex; align-items: center; justify-content: center; gap: .75rem; order: 2; flex: 1; }
+    .nav-links { display: flex; align-items: center; gap: 1.4rem; list-style: none; order: 1; }
     .btn { display: inline-flex; align-items: center; justify-content: center; min-height: 46px; padding: .85rem 1.15rem; border-radius: 999px; text-decoration: none; font-weight: 700; font-size: var(--text-sm); letter-spacing: .01em; }
     .btn-primary { background: linear-gradient(90deg, var(--color-primary), #73e7ff); color: #021116; box-shadow: 0 10px 30px rgba(51,215,255,.18); }
     .btn-primary:hover { transform: translateY(-1px); box-shadow: 0 16px 34px rgba(51,215,255,.22); }
+    .nav-actions .btn-primary { background: transparent; color: var(--color-primary); border: 2px solid var(--color-primary); font-size: .95rem; font-weight: 800; letter-spacing: .1em; padding: .75rem 2rem; text-transform: uppercase; box-shadow: 0 0 20px rgba(51,215,255,.12); }
+    .nav-actions .btn-primary:hover { background: rgba(51,215,255,.08); box-shadow: 0 0 32px rgba(51,215,255,.28); color: #fff; transform: translateY(-1px); }
     .btn-ghost { border: 1px solid rgba(255,255,255,.12); background: rgba(255,255,255,.03); }
     .btn-ghost:hover { border-color: rgba(51,215,255,.45); color: var(--color-primary); }
     .nav-toggle { display: none; width: 44px; height: 44px; border-radius: 12px; align-items: center; justify-content: center; border: 1px solid rgba(255,255,255,.08); }
@@ -216,10 +212,10 @@
           <img src="KickinTheirDetails614_Logo.jpeg" alt="KickinTheirDetails614 logo" width="960" height="960" loading="eager" />
         </a>
         <ul class="nav-links">
-          ><a href="#services">Services</a></li>
-          ><a href="#services">Pricing</a></li>
-          ><a href="#why-us">Why Us</a></li>
-          ><a href="#contact">Contact</a></li>
+        ><a href="#services">Services</a></li>
+        ><a href="#services">Pricing</a></li>
+        ><a href="#why-us">Why Us</a></li>
+        ><a href="#contact">Contact</a></li>
         </ul>
         <div class="nav-actions">
           <a class="btn btn-primary" href="tel:6149173935">BOOK NOW</a>
@@ -418,7 +414,7 @@
       <div class="footer-grid">
         <div>
           <a class="brand" href="#top" aria-label="KickinTheirDetails614 home">
-            <img src="./KickinTheirDetails614-Logo.jpg" alt="KickinTheirDetails614 logo" width="960" height="960" loading="lazy" />
+            <img src="./KickinTheirDetails614_Logo.jpeg" alt="KickinTheirDetails614 logo" width="960" height="960" loading="lazy" />
           </a>
           <p class="footer-note">Premium auto detailing for drivers who want a cleaner finish, better protection, and service they can count on.</p>
         </div>
