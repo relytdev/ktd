@@ -30,11 +30,16 @@
       --space-12: 3rem; --space-16: 4rem; --space-20: 5rem; --space-24: 6rem;
       --radius-sm: .375rem; --radius-md: .75rem; --radius-lg: 1rem;
       --radius-xl: 1.25rem; --radius-full: 9999px;
-      --color-bg: #050505; --color-surface: #0d0d0d;
-      --color-surface-2: #131313; --color-surface-offset: #1a1a1a;
-      --color-border: #242424; --color-text: #f5f7fb;
-      --color-text-muted: #b7bfd1; --color-text-faint: #6f7686;
-      --color-primary: #33d7ff; --color-primary-2: #8f63ff;
+      --color-bg: #050505;
+      --color-surface: #0d0d0d;
+      --color-surface-2: #131313;
+      --color-surface-offset: #1a1a1a;
+      --color-border: #242424;
+      --color-text: #f5f7fb;
+      --color-text-muted: #b7bfd1;
+      --color-text-faint: #6f7686;
+      --color-primary: #33d7ff;
+      --color-primary-2: #8f63ff;
       --color-primary-soft: rgba(51,215,255,.12);
       --shadow-lg: 0 18px 50px rgba(0,0,0,.45);
       --transition: 180ms cubic-bezier(.16,1,.3,1);
@@ -77,7 +82,7 @@
     .mobile-nav { display: none; padding: 0 0 1rem; border-bottom: 1px solid rgba(255,255,255,.06); }
     .mobile-nav.is-open { display: block; }
     .mobile-nav-inner { display: flex; flex-direction: column; gap: .6rem; padding-top: .5rem; }
-    .mobile-nav a { text-decoration: none; padding: .9rem 0; color: var(--color-text-muted); font-weight: 600; }
+    .mobile-nav a { text-decoration: none; padding: .9rem 0; color: var(--color-text-muted); font-weight: 600; border-bottom: 1px solid rgba(255,255,255,.04); }
 
     /* HERO */
     .hero { padding: clamp(3rem,6vw,5rem) 0 2rem; }
@@ -100,16 +105,365 @@
     .showcase-thumbs img { width: 100%; aspect-ratio: 1/1; object-fit: cover; border-radius: 16px; opacity: .92; transform: translateY(0); transition: transform var(--transition), opacity var(--transition), box-shadow var(--transition); }
     .showcase-thumbs img:hover { opacity: 1; transform: translateY(-2px); box-shadow: 0 14px 30px rgba(0,0,0,.35); }
 
-    /* SERVICES - 3 COLUMNS */
+    /* SECTIONS */
     section { padding: clamp(3.5rem,8vw,6rem) 0; }
     .section-head { display: flex; flex-direction: column; gap: .75rem; margin-bottom: 2rem; }
     .section-title { font-size: var(--text-2xl); line-height: 1; letter-spacing: -.03em; }
     .section-copy { max-width: 62ch; color: var(--color-text-muted); }
+
+    /* SERVICES - 3 COLUMNS */
     .services-columns { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1.25rem; align-items: start; }
-    .service-card { background: linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.025)); border: 1px solid rgba(255,255,255,.07); border-radius: 26px; overflow: hidden; box-shadow: var(--shadow-lg); padding: 1.75rem 1.5rem; display: flex; flex-direction: column; gap: 1rem; }
-    .service-card.featured { background: linear-gradient(180deg, rgba(51,215,255,.10), rgba(143,99,255,.08)); border: 1px solid rgba(51,215,255,.30); transform: scale(1.03); box-shadow: 0 24px 60px rgba(51,215,255,.15); }
-    .service-card-badge { display: inline-flex; align-items: center; gap: .4rem; background: linear-gradient(90deg, var(--color-primary), #73e7ff); color: #021116; font-size: var(--text-xs); font-weight: 800; padding: .35rem .75rem; border-radius: 999px; letter-spacing: .06em; text-transform: uppercase; width: fit-content; }
+    .service-card { background: linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.025)); border: 1px solid rgba(255,255,255,.07); border-radius: 26px; padding: 1.75rem 1.5rem; display: flex; flex-direction: column; gap: .85rem; box-shadow: var(--shadow-lg); }
+    .service-card.featured { background: linear-gradient(160deg, rgba(51,215,255,.11), rgba(143,99,255,.09)); border: 1.5px solid rgba(51,215,255,.35); transform: scale(1.03); box-shadow: 0 24px 60px rgba(51,215,255,.18); }
+    .service-badge { display: inline-flex; align-items: center; background: linear-gradient(90deg, var(--color-primary), #73e7ff); color: #021116; font-size: var(--text-xs); font-weight: 800; padding: .35rem .8rem; border-radius: 999px; letter-spacing: .06em; text-transform: uppercase; width: fit-content; margin-bottom: .25rem; }
     .service-card h3 { font-size: var(--text-lg); font-weight: 800; letter-spacing: -.01em; color: var(--color-text); }
     .service-card.featured h3 { color: var(--color-primary); }
-    .service-card p { color: var(--color-text-muted); font-size: var(--text-sm); line-height: 1.65; }
-    .service-pricing { display: flex; flex-direction: column; gap: .45rem; margin-top: .5rem; padding-top: 1rem; border-top: 
+    .service-card p { color: var(--color-text-muted); font-size: var(--text-sm); line-height
+: 1.65; }
+    .service-pricing { display: flex; flex-direction: column; gap: .4rem; margin-top: .5rem; padding-top: 1rem; border-top: 1px solid rgba(255,255,255,.08); }
+    .service-pricing .price-row { display: flex; justify-content: space-between; align-items: center; font-size: var(--text-sm); color: var(--color-text-muted); }
+    .service-pricing .price-row span:last-child { font-weight: 800; color: var(--color-text); }
+    .service-card.featured .service-pricing .price-row span:last-child { color: var(--color-primary); }
+    .addon-section { margin-top: 1rem; padding-top: 1rem; border-top: 1px solid rgba(255,255,255,.08); }
+    .addon-section h4 { font-size: var(--text-xs); text-transform: uppercase; letter-spacing: .15em; color: var(--color-text-faint); font-weight: 700; margin-bottom: .6rem; }
+    .addon-list { display: grid; gap: .45rem; }
+    .addon-list div { font-size: var(--text-sm); color: var(--color-text-muted); }
+
+    /* WHY US */
+    .reasons-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
+    .reason { background: rgba(255,255,255,.03); border: 1px solid rgba(255,255,255,.06); border-radius: 22px; padding: 1.25rem; }
+    .reason h3 { font-size: var(--text-base); margin-bottom: .35rem; }
+    .reason p { font-size: var(--text-sm); color: var(--color-text-muted); }
+
+    /* GALLERY */
+    .gallery-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
+    .gallery-item { position: relative; border-radius: 20px; overflow: hidden; }
+    .gallery-item img { width: 100%; aspect-ratio: 4/3; object-fit: cover; display: block; transition: transform 400ms cubic-bezier(.16,1,.3,1); }
+    .gallery-item:hover img { transform: scale(1.04); }
+    .gallery-label { position: absolute; bottom: 0; left: 0; right: 0; padding: .75rem 1rem; background: linear-gradient(transparent, rgba(0,0,0,.75)); font-size: var(--text-xs); font-weight: 700; color: #fff; letter-spacing: .05em; text-transform: uppercase; }
+
+    /* BEFORE / AFTER */
+    .ba-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.25rem; }
+    .ba-pair { background: rgba(255,255,255,.03); border: 1px solid rgba(255,255,255,.06); border-radius: 22px; overflow: hidden; }
+    .ba-images { display: grid; grid-template-columns: 1fr 1fr; }
+    .ba-images img { width: 100%; aspect-ratio: 4/3; object-fit: cover; display: block; }
+    .ba-labels { display: grid; grid-template-columns: 1fr 1fr; }
+    .ba-label { padding: .5rem .75rem; font-size: var(--text-xs); font-weight: 700; text-transform: uppercase; letter-spacing: .1em; text-align: center; }
+    .ba-label.before { background: rgba(255,255,255,.04); color: var(--color-text-faint); }
+    .ba-label.after { background: rgba(51,215,255,.08); color: var(--color-primary); }
+
+    /* CTA */
+    .cta { padding-bottom: 5rem; }
+    .cta-card { position: relative; overflow: hidden; background: linear-gradient(135deg, rgba(51,215,255,.12), rgba(143,99,255,.12)); border: 1px solid rgba(255,255,255,.1); border-radius: 30px; padding: clamp(1.5rem,4vw,2.5rem); }
+    .cta-card::after { content: ''; position: absolute; inset: auto -40px -40px auto; width: 180px; height: 180px; border-radius: 50%; background: radial-gradient(circle, rgba(51,215,255,.2), transparent 70%); }
+    .cta-grid { position: relative; display: grid; grid-template-columns: 1.1fr .9fr; gap: 1rem; align-items: center; }
+    .cta h2 { font-size: var(--text-2xl); line-height: 1.02; margin-bottom: .7rem; }
+    .cta p { color: var(--color-text-muted); max-width: 52ch; }
+    .cta-actions { display: flex; flex-wrap: wrap; gap: .75rem; justify-content: flex-end; }
+
+    /* FOOTER */
+    footer { padding: 2rem 0 3rem; border-top: 1px solid rgba(255,255,255,.06); }
+    .footer-grid { display: grid; grid-template-columns: 1.2fr 1fr 1fr; gap: 1rem; align-items: start; }
+    .footer-note { color: var(--color-text-muted); font-size: var(--text-sm); max-width: 34ch; margin-top: .8rem; }
+    .footer-title { font-size: var(--text-xs); text-transform: uppercase; letter-spacing: .16em; color: var(--color-text-faint); font-weight: 700; margin-bottom: .75rem; }
+    .footer-links { display: grid; gap: .55rem; }
+    .footer-links a, .footer-links span { text-decoration: none; color: var(--color-text-muted); font-size: var(--text-sm); }
+    .footer-links a:hover { color: var(--color-primary); }
+    .footer-bottom { margin-top: 1.5rem; padding-top: 1rem; border-top: 1px solid rgba(255,255,255,.06); display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap; color: var(--color-text-faint); font-size: var(--text-xs); }
+
+    /* REVEAL ANIMATION */
+    .reveal { opacity: 0; transform: translateY(22px); transition: opacity 650ms cubic-bezier(.16,1,.3,1), transform 650ms cubic-bezier(.16,1,.3,1); }
+    .reveal.is-visible { opacity: 1; transform: translateY(0); }
+
+    /* RESPONSIVE */
+    @media (max-width: 980px) {
+      .hero-grid, .cta-grid, .footer-grid { grid-template-columns: 1fr; }
+      .services-columns { grid-template-columns: 1fr; }
+      .service-card.featured { transform: scale(1); }
+      .reasons-grid { grid-template-columns: 1fr 1fr; }
+      .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+      .ba-grid { grid-template-columns: 1fr; }
+      .cta-actions { justify-content: flex-start; }
+    }
+    @media (max-width: 760px) {
+      .nav-links, .nav-actions .btn-ghost { display: none; }
+      .nav-toggle { display: flex; }
+      .hero-grid, .cta-grid, .footer-grid { grid-template-columns: 1fr; }
+      .brand-text .brand-sub { display: none; }
+      h1 { max-width: 12ch; }
+      .hero p.lead { font-size: var(--text-base); }
+      .brand img { width: 132px; height: auto; }
+      .showcase-thumbs { grid-template-columns: repeat(2, 1fr); }
+      .reasons-grid { grid-template-columns: 1fr; }
+      .gallery-grid { grid-template-columns: 1fr; }
+      .ba-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <div class="container">
+      <nav>
+        <a class="brand" href="#top" aria-label="KickinTheirDetails614 home">
+          <img src="./KickinTheirDetails614-Logo.jpg" alt="KickinTheirDetails614 logo" width="960" height="960" loading="eager" />
+        </a>
+        <ul class="nav-links">
+          ><a href="#services">Services</a></li>
+          ><a href="#services">Pricing</a></li>
+          ><a href="#why-us">Why Us</a></li>
+          ><a href="#contact">Contact</a></li>
+        </ul>
+        <div class="nav-actions">
+          <a class="btn btn-ghost" href="mailto:KickinTheirDetails614@gmail.com">Email</a>
+          <a class="btn btn-primary" href="tel:6149173935">Call &amp; Text Now</a>
+        </div>
+        <button class="nav-toggle" aria-expanded="false" aria-controls="mobile-nav" aria-label="Toggle mobile menu"><span></span></button>
+      </nav>
+      <div id="mobile-nav" class="mobile-nav" aria-hidden="true">
+        <div class="container mobile-nav-inner">
+          <a href="#services">Services</a>
+          <a href="#services">Pricing</a>
+          <a href="#why-us">Why Us</a>
+          <a href="#contact">Contact</a>
+          <a class="btn btn-primary" href="tel:6149173935">Call &amp; Text Now</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+
+    <!-- HERO -->
+    <section class="hero" id="top">
+      <div class="container hero-grid">
+        <div class="reveal is-visible">
+          <div class="eyebrow">Central Ohio Detailing</div>
+          <h1>Give your vehicle the detail it deserves.</h1>
+          <p class="lead">KickinTheirDetails614 delivers premium auto detailing across Central Ohio — protecting your paint, refreshing your interior, and leaving every vehicle looking better than the day you bought it.</p>
+          <div class="hero-points">
+            <span class="chip"><strong>Mobile</strong> Service Available</span>
+            <span class="chip"><strong>Premium</strong> Products Only</span>
+            <span class="chip"><strong>Interior</strong> &amp; Exterior</span>
+            <span class="chip"><strong>Central Ohio</strong> &amp; Surrounding Areas</span>
+          </div>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="tel:6149173935">Call or Text Now</a>
+            <a class="btn btn-ghost" href="#services">See Pricing</a>
+          </div>
+        </div>
+        <div class="hero-card showcase-card reveal is-visible">
+          <div class="showcase-top">
+            <strong>Our Work</strong>
+            <span>Real results, real vehicles</span>
+          </div>
+          <div class="showcase-main">
+            <img src="./20250405_130244.jpg" alt="Freshly detailed vehicle exterior" width="1200" height="900" loading="eager" />
+          </div>
+          <div class="showcase-thumbs">
+            <img src="./20250405_130256.jpg" alt="Detailed exterior close up" width="500" height="500" loading="lazy" />
+            <img src="./20250405_130320.jpg" alt="Clean vehicle finish" width="500" height="500" loading="lazy" />
+            <img src="./20250405_130327.jpg" alt="Polished paint detail" width="500" height="500" loading="lazy" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SERVICES -->
+    <section id="services">
+      <div class="container">
+        <div class="section-head reveal">
+          <h2 class="section-title">Professional detailing services with clear pricing.</h2>
+          <p class="section-copy">Every package is straightforward — pick the service that fits your vehicle and budget, and we handle the rest.</p>
+        </div>
+        <div class="services-columns">
+
+          <!-- EXTERIOR -->
+          <div class="service-card reveal">
+            <h3>Premium Exterior Detail</h3>
+            <p>Foam bath, 6-month ceramic sealant, deep wheel cleaning, and tire shine. Your paint protected and looking its best.</p>
+            <div class="service-pricing">
+              <div class="price-row"><span>Sedan</span><span>$65</span></div>
+              <div class="price-row"><span>Small SUV / Truck</span><span>$75</span></div>
+              <div class="price-row"><span>Large SUV / Truck / Van</span><span>$95</span></div>
+            </div>
+          </div>
+
+          <!-- FULL PREMIUM - FEATURED CENTER -->
+          <div class="service-card featured reveal">
+            <div class="service-badge">&#9733; Best Value</div>
+            <h3>Full Premium Detail</h3>
+            <p>The complete package — full interior and exterior treatment, maximum paint protection, and a showroom-level finish inside and out. This is our most popular service for a reason.</p>
+            <div class="service-pricing">
+              <div class="price-row"><span>Sedan</span><span>$150 <small style="font-weight:400;font-size:.75em;opacity:.7">(save $10)</small></span></div>
+              <div class="price-row"><span>Small SUV / Truck</span><span>$165 <small style="font-weight:400;font-size:.75em;opacity:.7">(save $15)</small></span></div>
+              <div class="price-row"><span>Large SUV / Truck / Van</span><span>$200 <small style="font-weight:400;font-size:.75em;opacity:.7">(save $20)</small></span></div>
+            </div>
+          </div>
+
+          <!-- INTERIOR -->
+          <div class="service-card reveal">
+            <h3>Premium Interior Detail</h3>
+            <p>Deep vacuum, Tornador cleaning, UV protection, leather refresh, and streak-free glass. Your cabin feeling clean and fresh.</p>
+            <div class="service-pricing">
+              <div class="price-row"><span>Sedan</span><span>$95</span></div>
+              <div class="price-row"><span>Small SUV / Truck</span><span>$105</span></div>
+              <div class="price-row"><span>Large SUV / Truck / Van</span><span>$125</span></div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- ADD-ONS -->
+        <div class="service-card reveal" style="margin-top:1.25rem;">
+          <h3>Additional Services</h3>
+          <div class="addon-list">
+            <div>Decontamination Clay Bar — $50–$75</div>
+            <div>Pet Hair Removal — $50–$75</div>
+            <div>Drill Brush Service — $50–$75</div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- GALLERY -->
+    <section id="gallery">
+      <div class="container">
+        <div class="section-head reveal">
+          <h2 class="section-title">Real results from real vehicles.</h2>
+          <p class="section-copy">Every photo is from an actual job. This is what your vehicle can look like.</p>
+        </div>
+        <div class="gallery-grid">
+          <div class="gallery-item reveal">
+            <img src="./20250405_130244.jpg" alt="Exterior detail result" loading="lazy" />
+            <div class="gallery-label">Exterior Detail</div>
+          </div>
+          <div class="gallery-item reveal">
+            <img src="./20250405_130256.jpg" alt="Paint correction close up" loading="lazy" />
+            <div class="gallery-label">Paint Protection</div>
+          </div>
+          <div class="gallery-item reveal">
+            <img src="./20250405_130320.jpg" alt="Full exterior finish" loading="lazy" />
+            <div class="gallery-label">Full Exterior</div>
+          </div>
+          <div class="gallery-item reveal">
+            <img src="./20250405_130327.jpg" alt="Interior detail result" loading="lazy" />
+            <div class="gallery-label">Interior Detail</div>
+          </div>
+          <div class="gallery-item reveal">
+            <img src="./20250405_125035.jpg" alt="Seat and floor cleaning" loading="lazy" />
+            <div class="gallery-label">Deep Clean</div>
+          </div>
+          <div class="gallery-item reveal">
+            <img src="./20250405_125041.jpg" alt="Wheel and tire detail" loading="lazy" />
+            <div class="gallery-label">Wheel Detail</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- WHY US -->
+    <section id="why-us">
+      <div class="container">
+        <div class="section-head reveal">
+          <h2 class="section-title">Why drivers choose KickinTheirDetails614.</h2>
+          <p class="section-copy">We treat every vehicle like it's our own. Here's what you can expect every time you book.</p>
+        </div>
+        <div class="reasons-grid">
+          <article class="reason reveal">
+            <h3>Results you can see</h3>
+            <p>We don't cut corners. Every detail is done with professional-grade products and real attention — so when you pull away, the difference is obvious.</p>
+          </article>
+          <article class="reason reveal">
+            <h3>Honest, upfront pricing</h3>
+            <p>No hidden fees, no surprises. What you see on our pricing is what you pay — based on your vehicle size and the service you choose.</p>
+          </article>
+          <article class="reason reveal">
+            <h3>Easy to book</h3>
+            <p>Just call or text. No forms, no waiting. We'll get you scheduled fast and show up ready to work.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+    <!-- CTA -->
+    <section class="cta" id="contact">
+      <div class="container">
+        <div class="cta-card reveal">
+          <div class="cta-grid">
+            <div>
+              <div class="section-kicker" style="font-size:var(--text-xs);text-transform:uppercase;letter-spacing:.18em;color:var(--color-primary);font-weight:700;margin-bottom:.75rem;">Book Now</div>
+              <h2>Ready to refresh your vehicle?</h2>
+              <p>Call or text to get on the schedule. We'll help you pick the right package, give you a quick quote, and get your vehicle looking its best — fast.</p>
+            </div>
+            <div class="cta-actions">
+              <a class="btn btn-primary" href="tel:6149173935">614-917-3935</a>
+              <a class="btn btn-ghost" href="mailto:KickinTheirDetails614@gmail.com">Send Email</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <a class="brand" href="#top" aria-label="KickinTheirDetails614 home">
+            <img src="./KickinTheirDetails614-Logo.jpg" alt="KickinTheirDetails614 logo" width="960" height="960" loading="lazy" />
+          </a>
+          <p class="footer-note">Premium auto detailing for drivers who want a cleaner finish, better protection, and service they can count on.</p>
+        </div>
+        <div>
+          <div class="footer-title">Contact</div>
+          <div class="footer-links">
+            <a href="tel:6149173935">614-917-3935</a>
+            <a href="mailto:KickinTheirDetails614@gmail.com">KickinTheirDetails614@gmail.com</a>
+            <span>Central Ohio &amp; Surrounding Areas</span>
+            <a href="https://instagram.com/KickinTheirDetails614" target="_blank" rel="noopener">@KickinTheirDetails614</a>
+          </div>
+        </div>
+        <div>
+          <div class="footer-title">Services</div>
+          <div class="footer-links">
+            <a href="#services">Premium Exterior Detail</a>
+            <a href="#services">Full Premium Detail</a>
+            <a href="#services">Premium Interior Detail</a>
+            <a href="#services">Additional Services</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2026 KickinTheirDetails614</span>
+        <span>Made with &#10084; in Ohio</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const navToggle = document.querySelector('.nav-toggle');
+    const mobileNav = document.getElementById('mobile-nav');
+    if (navToggle) {
+      navToggle.addEventListener('click', () => {
+        const expanded = navToggle.getAttribute('aria-expanded') === 'true';
+        navToggle.setAttribute('aria-expanded', String(!expanded));
+        mobileNav.classList.toggle('is-open', !expanded);
+        mobileNav.setAttribute('aria-hidden', String(expanded));
+      });
+    }
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  </script>
+
+</body>
+</html>
