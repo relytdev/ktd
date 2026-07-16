@@ -30,8 +30,85 @@
       --space-1: 0.25rem; --space-2: 0.5rem; --space-3: 0.75rem; --space-4: 1rem; --space-5: 1.25rem; --space-6: 1.5rem; --space-8: 2rem; --space-10: 2.5rem; --space-12: 3rem; --space-16: 4rem; --space-20: 5rem; --space-24: 6rem;
       --radius-sm: 0.375rem; --radius-md: 0.5rem; --radius-lg: 0.875rem; --radius-xl: 1.25rem; --radius-full: 9999px;
       --font-display: 'Outfit', 'Arial', sans-serif; --font-body: 'Plus Jakarta Sans', 'Arial', sans-serif;
-      --transition-interactive: 180ms cubic-bezier(0.16, 1, 0.3, 1);
-    }
+      --transition-interactive: 180ms cubic-bezier(0.16, 1, 0.3, 1); 
+}
+.field {
+  display: grid;
+  gap: .55rem;
+}
+
+.field label {
+  font-size: var(--text-sm);
+  font-weight: 700;
+}
+
+.field input:not([type="checkbox"]),
+.field select,
+.field textarea {
+  width: 100%;
+  padding: 1rem 1rem;
+  border-radius: 1rem;
+  border: 1px solid var(--color-border);
+  background: rgba(255,255,255,.03);
+  color: var(--color-text);
+}
+
+.field input:not([type="checkbox"])::placeholder,
+.field textarea::placeholder {
+  color: var(--color-text-faint);
+}
+
+.addon-fieldset {
+  border: none;
+  padding: 0;
+  margin: 0;
+}
+
+.addon-fieldset legend {
+  margin-bottom: .55rem;
+  font-size: var(--text-sm);
+  font-weight: 700;
+  color: var(--color-text);
+}
+
+.addon-select-box {
+  border: 1px solid var(--color-border);
+  background: rgba(255,255,255,.03);
+  border-radius: 1rem;
+  overflow: hidden;
+}
+
+.addon-option {
+  display: flex;
+  align-items: center;
+  gap: .75rem;
+  padding: .95rem 1rem;
+  cursor: pointer;
+  color: var(--color-text);
+  font-size: var(--text-sm);
+}
+
+.addon-option + .addon-option {
+  border-top: 1px solid var(--color-divider);
+}
+
+.addon-option:hover {
+  background: rgba(255,255,255,.04);
+}
+
+.addon-option input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  margin: 0;
+  flex: 0 0 18px;
+  accent-color: #54b7ff;
+}
+
+.addon-option span {
+  display: inline-block;
+  flex: 1;
+  text-align: left;
+}
     [data-theme="dark"] {
       --color-bg: #090a11;
       --color-surface: #10131d;
@@ -340,22 +417,52 @@
                 <label for="vehicle">Vehicle</label>
                 <input id="vehicle" name="vehicle" type="text" placeholder="Year, make, model" required />
               </div>
-              <div class="field">
-                <label for="service">Service interest</label>
-                <select id="service" name="service" required>
-                  <option value="">Select a service</option>
-                  <option>Premium Exterior Wash</option>
-                  <option>Premium Interior Wash</option>
-                  <option>Full Premium Detail</option>
-                  <option>Steam Cleaning</option>
-                  <option>Engine Bay Cleaning</option>
-                  <option>Pet Hair Removal</option>
-                  <option>Blackout Feature</option>
-                  <option>Clay Bar Treatment</option>
-                  <option>Drill Brush Service</option>
-                  <option>Not sure yet / need guidance</option>
-                </select>
-              </div>
+			<div class="field">
+				<label for="mainService">Main service</label>
+			<div class="select-wrap">
+				<select id="mainService" name="mainService" required>
+				<option value="" disabled selected hidden>Select one main service</option>
+				<option>Premium Exterior Wash</option>
+				<option>Premium Interior Wash</option>
+				<option>Full Premium Detail</option>
+				<option>Not sure yet / need guidance</option>
+				</select>
+			</div>
+		</div>
+<fieldset class="field addon-fieldset">
+  <legend>Additional services</legend>
+  <div class="addon-select-box">
+    <label class="addon-option">
+      <input type="checkbox" name="addons" value="Steam Cleaning">
+      <span>Steam Cleaning</span>
+    </label>
+
+    <label class="addon-option">
+      <input type="checkbox" name="addons" value="Engine Bay Cleaning">
+      <span>Engine Bay Cleaning</span>
+    </label>
+
+    <label class="addon-option">
+      <input type="checkbox" name="addons" value="Pet Hair Removal">
+      <span>Pet Hair Removal</span>
+    </label>
+
+    <label class="addon-option">
+      <input type="checkbox" name="addons" value="Blackout Feature">
+      <span>Blackout Feature</span>
+    </label>
+
+    <label class="addon-option">
+      <input type="checkbox" name="addons" value="Clay Bar Treatment">
+      <span>Clay Bar Treatment</span>
+    </label>
+
+    <label class="addon-option">
+      <input type="checkbox" name="addons" value="Drill Brush Service">
+      <span>Drill Brush Service</span>
+    </label>
+  </div>
+</fieldset>
               <div class="field">
                 <label for="preferred">Preferred day / time</label>
                 <input id="preferred" name="preferred" type="text" placeholder="Example: Saturday morning or next Tuesday after 5" required />
@@ -393,13 +500,15 @@
       event.preventDefault();
       const name = document.getElementById('name').value.trim();
       const vehicle = document.getElementById('vehicle').value.trim();
-      const service = document.getElementById('service').value.trim();
+      const mainService = document.getElementById('mainService').value.trim();
+	  const addons = [...document.querySelectorAll('input[name="addons"]:checked')].map(item => item.value);
       const preferred = document.getElementById('preferred').value.trim();
       const notes = document.getElementById('notes').value.trim();
       const message = [
         'Hi! My name is ' + name + '.',
         'My vehicle is: ' + vehicle + '.',
-        'I am interested in: ' + service + '.',
+        'I am interested in the main service: ' + mainService + '.',
+		addons.length ? 'Additional services: ' + addons.join(', ') + '.' : '',
         'My preferred day/time is: ' + preferred + '.',
         notes ? 'Additional notes: ' + notes + '.' : ''
       ].filter(Boolean).join('\n');
